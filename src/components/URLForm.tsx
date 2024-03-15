@@ -32,6 +32,7 @@ export const URLForm = () => {
 
     const url = urlRef.current.value;
     const alias = aliasRef.current.value;
+    setResult({ error: false, message: "", fetching: true });
     shortenURL(url, alias)
       .then(res => {
         if (res.error) {
