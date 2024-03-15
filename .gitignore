@@ -6,7 +6,6 @@ dist/
 
 # dependencies
 node_modules/
-pnpm-lock.yaml
 
 
 # logs
@@ -21,4 +20,3 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
-pnpm-lock.yaml
