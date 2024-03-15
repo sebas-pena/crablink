@@ -1,0 +1,20 @@
+---
+import { Link } from "../db/models/Link";
+import { connectDB } from "../db/connection";
+
+const { id } = Astro.params;
+const connection = await connectDB();
+const link = await Link.findOneAndUpdate(
+  { id },
+  { $inc: { clicks: 1 }, lastViewed: new Date() },
+);
+await connection.disconnect();
+if (!link) {
+  return Astro.redirect("/404");
+} else {
+  if (!link.url.startsWith("http")) {
+    link.url = "http://" + link.url;
+  }
+  return Astro.redirect(link.url);
+}
+---
